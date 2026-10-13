@@ -2,6 +2,8 @@
 @section('title', 'Ekstrakulikuler MI leuwiseeng')
 @section('content')
     <div class="container py-5">
+
+
         <div class="text-center mb-4">
             <h2 class="fw-bold mb-1">Ekstrakulikuler</h2>
             <p class="text-secondary mb-0">Seluruh kegiatan ekstrakulikuler MI Leuwiseeng ({{ $eskuls->count() }} kegiatan)</p>
@@ -32,6 +34,8 @@
                     </div>
                 </div>
             @empty
+
+            
                 <div class="col-12 text-center text-secondary">Belum ada ekstrakulikuler.</div>
             @endforelse
         </div>

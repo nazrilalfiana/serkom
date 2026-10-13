@@ -1,5 +1,7 @@
 @extends('layouts.public')
 @section('title', 'Galeri MI Leuwiseeng')
+
+
 @section('content')
     <div class="container py-5">
         <div class="text-center mb-4">
@@ -49,5 +51,8 @@
         <div class="mt-4 d-flex justify-content-center">
             {{ $galeris->links('pagination::bootstrap-5') }}
         </div>
+
+
     </div>
+    
 @endsection

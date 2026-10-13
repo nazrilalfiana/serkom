@@ -43,16 +43,20 @@
                         </span>
                     </td>
                     <td>
-                        <a href="{{route('berita.edit', $berita->id)}}" class="btn btn-warning btn-sm text-white">
-                            <i class="lni lni-pencil"></i>
-                        </a>
-                       <form action="{{route('berita.destroy', $berita->id)}}" method="POST" class="d-inline" onsubmit="return confirm('apakah anda yakin ingin mengahapus data ini')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                 <i class="lni lni-trash-can"></i>
-                            </button>
-                        </form>
+                        @if (auth()->user()->role === 'Admin' || $berita->id_user === auth()->id())
+                            <a href="{{route('berita.edit', $berita->id)}}" class="btn btn-warning btn-sm text-white">
+                                <i class="lni lni-pencil"></i>
+                            </a>
+                            <form action="{{route('berita.destroy', $berita->id)}}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="lni lni-trash-can"></i>
+                                </button>
+                            </form>
+                        @else
+                            <span class="text-muted small">Hanya pembuat</span>
+                        @endif
                     </td>
                 </tr>
 

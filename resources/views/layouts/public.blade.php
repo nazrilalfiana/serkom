@@ -31,10 +31,12 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('landing') }}#guru">Guru</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('landing') }}#berita">Berita</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('landing') }}#galeri">Galeri</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('landing') }}#siswa">Siswa</a></li>
 
                     @if (Route::has('login'))
                         @auth
                             <li class="nav-item"><a href="{{ url('/dashboard') }}" class="btn btn-success">Dashboard</a></li>
+                            <li class="nav-item"><a href="{{ url('/profil-saya') }}" class="btn btn-success">profil-saya</a></li>
                         @else
                             <li class="nav-item"><a class="btn btn-outline-success" href="{{ route('login') }}">Masuk</a></li>
                         @endauth

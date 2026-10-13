@@ -156,7 +156,7 @@
         </section>
     @endif
 
-
+ 
     @if ($gurus->isNotEmpty())
         <section class="container py-5 text-center" id="guru">
             <h2 class="fw-bold mb-1">Guru Kami</h2>
@@ -229,6 +229,8 @@
 
                             </a>
                         </div>
+
+
                     @endforeach
                 </div>
                 <div class="mt-4">
@@ -237,6 +239,43 @@
                     </a>
                 </div>
             </div>
+        </section>
+    @endif
+    @if ($siswas->isNotEmpty())
+        <section class="container py-5 text-center" id="siswa">
+             <div class="text-center mb-4">
+                <h2 class="fw-bold mb-1">Siswa</h2>
+                <p class="text-secondary mb-0">Siswa</p>
+            </div>
+            <div class="table-wrapper table-responsive">
+                    <table class="table striped-table align-middle">
+                         <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nisn</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Kelas</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Tahun Masuk</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($siswas as $index =>$siswa)
+                                    <tr>
+                                        <td>{{ $index + 1}}</td>
+                                        <td>{{$siswa->nisn}}</td>
+                                        <td>{{$siswa->nama_siswa ?? '-'}}</td>
+                                        <td>{{$siswa->kelas->kelas ?? '-'}}</td>
+                                        <td>{{$siswa->jenis_kelamin == 'laki-laki' ? 'Laki-laki' : ($siswa->jenis_kelamin == 'perempuan' ? 'perempuan' :  '_') }}</td>
+                                        <td>{{$siswa->tahun_masuk ?? '-'}}</td>
+                                    </tr>
+                                @empty
+                                    
+                                @endforelse
+                            </tbody>
+                    </table>
+            </div>
+
         </section>
     @endif
 
@@ -269,6 +308,8 @@
                     </div>
                 @endforeach
             </div>
+
+            
             <div class="text-center mt-4">
                 <a href="{{ route('landing.galeri') }}" class="btn btn-success">
                     Lihat Semua Galeri <i class="fa-solid fa-arrow-right"></i>

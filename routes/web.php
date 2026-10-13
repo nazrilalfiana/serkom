@@ -11,14 +11,18 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\EskulController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\ProfilSayaController;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing');
 Route::get('/daftar-guru', [LandingPageController::class, 'guru'])->name('landing.guru');
+Route::get('/daftar-siswa', [LandingPageController::class, 'siswa'])->name('landing.siswa');
 Route::get('/daftar-berita', [LandingPageController::class, 'berita'])->name('landing.berita');
 Route::get('/daftar-berita/{id}', [LandingPageController::class, 'beritaDetail'])->name('landing.berita.detail');
 Route::get('/profil-lengkap', [LandingPageController::class, 'profil'])->name('landing.profil');
 Route::get('/daftar-galeri', [LandingPageController::class, 'galeri'])->name('landing.galeri');
 Route::get('/daftar-eskul', [LandingPageController::class, 'eskul'])->name('landing.eskul');
+Route::get('/profil-saya', [ProfilSayaController::class, 'index'])->name('profill.profilsaya');
+
 
 
 /*

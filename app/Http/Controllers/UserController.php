@@ -81,17 +81,17 @@ class UserController extends Controller
             $data['password'] = Hash::make($request->password);
         }
         $user->update($data);
-        return redirect()->back()->with('berhasil', 'profil berhasil di perbaharui!');
+        return redirect()->back()->with('success', 'profil berhasil di perbaharui!');
     }
     public function resetPassword(Request $request, $id){
-        abort_if(auth()->user()->role() !== 'admin', 403);
+        abort_if(auth()->user()->role !== 'Admin', 403);
         $request->validate([
             'password' => 'required|min:8|confirmed',
         ]);
         $user = User::findOrFail($id);
         $user->update(['password'=> Hash::make($request->password)]);
 
-        return back()->with('success', 'password' . $user->name . 'berhasil di reset');
+        return back()->with('success', 'password' . $user->username . 'berhasil di reset');
     }
 
 }

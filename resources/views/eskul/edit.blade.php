@@ -1,5 +1,5 @@
 @extends('layouts.index')
-@section('title_page',  'Edit Eskul')
+@section('title_page', 'Edit Eskul')
 @section('content')
     <div class="card">
         <div class="card-header">
@@ -32,40 +32,28 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="pembina" class="form_label">Pembina</label>
-                    <select name="pembina" id="pembina" class="form-select @error('pembina') is-invalid @enderror" required>
-                        @foreach ($gurus as $guru)
-                            @php $namaGuru = $guru->nama_guru ?? $guru->nama; @endphp
-                            <option value="{{$namaGuru}}" {{old('pembina', $eskul->pembina) == $namaGuru ? 'selected' : ''}}>
-                                {{$namaGuru}}
-                            </option>
-                        @endforeach
-                    </select>
+                    <label for="pembina" class="form-label">Pembina</label>
+                    <input type="text" name="pembina" id="pembina" class="form-control @error('pembina') is-invalid @enderror" value="{{old('pembina', $eskul->pembina)}}" required>
                     @error('pembina')
                         <div class="invalid-feedback">{{$message}}</div>
-                        
                     @enderror
                 </div>
 
-
                 <div class="mb-3">
-                    <label for="jadwal_latihan" class="form_label">Jadwal Latihan</label>
+                    <label for="jadwal_latihan" class="form-label">Jadwal Latihan</label>
                     <input type="text" name="jadwal_latihan" id="jadwal_latihan" class="form-control @error('jadwal_latihan' ) is-invalid @enderror" value="{{old('jadwal_latihan', $eskul->jadwal_latihan)}}" required>
                     @error('jadwal_latihan')
                         <div class="invalid-feedback">{{$message}}</div>
-                        
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label for="deskripsi" class="form_label">Deskripsi</label>
+                    <label for="deskripsi" class="form-label">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi' ) is-invalid @enderror"  rows="4" required>{{old('deskripsi', $eskul->deskripsi)}}</textarea>
                     @error('deskripsi')
                         <div class="invalid-feedback">{{$message}}</div>
-                        
                     @enderror
                 </div>
-
 
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">Simpan</button>

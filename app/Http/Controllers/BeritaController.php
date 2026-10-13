@@ -39,11 +39,12 @@ class BeritaController extends Controller
     }
     public function edit($id){
         $berita = Berita::findOrfail($id);
+        $this->otorisasi($berita);
         return view('berita.edit', compact('berita'));
     }
     public function update(Request $request,$id){
         $berita = Berita::findOrFail($id);
-
+        $this->otorisasi($berita);
         $request->validate([
             'judul' => 'required|string|max:50',
             'isi' => 'required|string',
@@ -62,18 +63,24 @@ class BeritaController extends Controller
             if($berita->gambar &&  Storage::disk('public')->exists($berita->gambar)){
                 Storage::disk('public')->delete($berita->gambar);
             }
-            $data['gambar'] =$request->file('gambar')->store('berita', 'public');
+            $data['gamabar'] =$request->file('gambar')->store('berita', 'public');
         }
         $berita->update($data);
         return redirect()->route('berita.index')->with('success', 'Berita Berhasil Di Updatee');
     }
     public function destroy($id){
         $berita = Berita::findOrFail($id);
+        $this->otorisasi($berita);
         if($berita->gambar && Storage::disk('public')->exists($berita->gambar)){
             Storage::disk('public')->delete($berita->gambar);
         }
 
         $berita->delete();
         return redirect()->route('berita.index')->with('succes', 'Berita Berhasil Di Hapusss');
+    }
+    public function otorisasi(Berita $berita){
+        if(auth()->user()->role !== 'Admin' && $berita->id_user !== auth()->id()){
+            abort(403, 'Anda ridak berhak mengubah berita ini');
+        }
     }
 }

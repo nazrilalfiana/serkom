@@ -21,6 +21,7 @@ class LandingPageController extends Controller
             'totalEskul' =>ekstrakulikuler::count(),
             'eskuls' => ekstrakulikuler::latest()->take(4)->get(),
             'gurus' => Guru::latest()->take(4)->get(),
+            'siswas' => siswa::latest()->take(4)->get(),
 
             'beritas' => Berita::whereRaw('LOWER(TRIM(status)) = ?', ['publis'])
                                     ->orderByDesc('tanggal')
@@ -31,6 +32,9 @@ class LandingPageController extends Controller
     }
     public function guru(){
         return view('landing.guru', ['gurus' => Guru::orderBy('nama_guru')->get()]);
+    }
+    public function siswa(){
+        return view('landing.siswa', ['siswas' => Siswa::orderBy('nama_siswa')->get()]);
     }
     public function berita(){
         return view('landing.berita', ['beritas' => Berita::whereRaw('LOWER(TRIM(status)) = ?', ['publis'])

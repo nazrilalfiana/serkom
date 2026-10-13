@@ -47,11 +47,11 @@
             
                                         </div>
                                         <button type="submit" class="btn btn-primary w-100">Masuk</button>
-                                        <a href="{{url('/')}}" >
+                                        {{-- <a href="{{url('/')}}" >
                                             <span class="icon"><i class="lni lni-grid-alt"></i>
                                             </span>
                                             <span class="text">LandingPage</span>
-                                        </a>
+                                        </a> --}}
                                     </form>
                                 </div>
                             </div>

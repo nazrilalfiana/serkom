@@ -1,6 +1,8 @@
 @extends('layouts.public')
 @section('title', $berita->judul .'Berita Detail')
 @section('content')
+
+
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -39,8 +41,10 @@
                             </div>
                         </a>
                     </div>
+                    
                 @endforeach
             </div>
         @endif
+
     </div>
 @endsection

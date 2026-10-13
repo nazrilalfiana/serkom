@@ -1,4 +1,5 @@
 @extends('layouts.public')
+
 @section('title', 'Berita MI Leuwiseeng')
 @section('content')
     <div class="container py-5">
@@ -30,10 +31,13 @@
             @empty
                 <div class="col-12 text-center text-secondary">Belum ada berita.</div>
             @endforelse
+
         </div>
 
         <div class="mt-4 d-flex justify-content-center">
             {{ $beritas->links('pagination::bootstrap-5') }}
         </div>
+
+        
     </div>
 @endsection

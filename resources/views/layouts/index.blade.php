@@ -752,6 +752,9 @@
                 max: 1200,
                 min: 0,
               },
+        //         @foreach (['1','2','3','4','5','6'] as $k)
+        //     <option value="{{ $k }}" {{ old('kelas') == $k ? 'selected' : '' }}>Kelas {{ $k }}</option>
+        // @endforeach
             },
             x: {
               grid: {

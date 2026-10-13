@@ -15,37 +15,43 @@
                         @csrf
                         <div class="row">
 
-                            <div class="col-md-6 mb-3">
-                                <label for="" class="fw-bold form-label">Nama Guru</label>
-                                <input type="text" name="nama_guru" id="" class="form-control @error('nama_guru') is-invalid @enderror" value="{{old('nama_guru')}}" placeholder="Masukan Nama lengkap" required>
-                                @error('nama_guru')
-                                    <div class="invalid-feedback">{{$message}}</div>
-                                @enderror
+                          <div class="mb-3">
+                            <label for="nama_guru" class="form-label fw-bold">Nama Guru <span class="text-danger">*</span></label>
+                            <input type="text" name="nama_guru" id="nama_guru" required
+                                value="{{ old('nama_guru') }}"
+                                class="form-control @error('nama_guru') is-invalid @enderror">
+                            @error('nama_guru')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                            </div>
-
-                            <div class="col-md-6 mb-3">
-                                <label for="" class="form-label fw-bold">NIP</label>
-                                <input type="text" name="nip" id="" class="form-control @error('nip') is-invalid @enderror" value="{{old('nip')}}" placeholder="Masukan nip">
+                            <div class="mb-3">
+                                <label for="nip" class="form-label fw-bold">NIP <span class="text-danger">*</span></label>
+                                <input type="text" name="nip" id="nip" maxlength="30" required
+                                    value="{{ old('nip') }}"
+                                    class="form-control @error('nip') is-invalid @enderror">
                                 @error('nip')
-                                    <div class="invalid-feedback">{{$message}}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
-                            <div class="col-md-6 mb-3">
-                                <label for="" class="form-label fw-bold">Mata Pelajaran</label>
-                                <input type="text" name="mapel" id="" class="form-control @error('mapel') is-invalid @enderror" value="{{old('mapel')}}" placeholder="Contoh matematika / bahasa.indonesia">
+                            <div class="mb-3">
+                                <label for="mapel" class="form-label fw-bold">Mata Pelajaran</label>
+                                <input type="text" name="mapel" id="mapel"
+                                    value="{{ old('mapel') }}"
+                                    class="form-control @error('mapel') is-invalid @enderror">
                                 @error('mapel')
-                                    <div class="invalid-feedback">{{$message}}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="" class="form-label fw-bold">Foto Guru</label>
-                                <input type="file" name="foto" id="foto" class="form-control @error('foto') is-invalid @enderror" accept="image/*">
-                                <small class="text-muted">Format: JPG, PNG, WEBP (Maks: 2MB)</small>
+                            <div class="mb-3">
+                                <label for="foto" class="form-label fw-bold">Foto</label>
+                                <input type="file" name="foto" id="foto" accept="image/*"
+                                    class="form-control @error('foto') is-invalid @enderror">
+                                <small class="text-muted">Boleh dikosongkan. Maksimal 2 MB.</small>
                                 @error('foto')
-                                    <div class="invalid-feedback">{{$message}}</div>
-                                    @enderror
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                         </div>
